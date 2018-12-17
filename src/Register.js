@@ -39,25 +39,26 @@ class Register extends Component{
       if (this.valid()) {
         this.props.addCardCallback(this.state);
         this.clearForm();
+        // TODO route to users/start conversation page
       }
     }
 
   render() {
     return (
       <form>
-        <label htmlFor="text"> Username:
+        <label htmlFor='text'> Username:
           <input
-          name="text"/>
+          name='text'/>
         </label>
-        <label htmlFor="text"> Email:
+        <label htmlFor='text'> Email:
           <input
-          name="text"/>
+          name='text'/>
         </label>
-        <label htmlFor="text"> Password:
+        <label htmlFor='text'> Password:
           <input
-          name="text"/>
+          name='text'/>
         </label>
-        <input type="submit" value="Submit" />
+        <input type='submit' value='Submit' />
       </form>
     );
   }

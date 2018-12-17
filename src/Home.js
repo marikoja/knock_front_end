@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import Login from './Login'
 import Register from './Register'
+import Conversation from './Conversation'
 
 class Home extends Component{
   render() {
@@ -14,19 +15,28 @@ class Home extends Component{
               Email Converstaion App
             </p>
           </header>
-          <button type="button" className='Button'>
-              <Link to="/login/">
+
+          <button type='button' className='Button'>
+              <Link to='/login/'>
                 Login
               </Link>
           </button >
-          <button type="button" className='Button'>
+
+          <button type='button' className='Button'>
             <Link to='/register/'>
               Register
             </Link>
           </button >
 
+          <button type='button' className='Button'>
+            <Link to='/conversation/'>
+              Conversation
+            </Link>
+          </button >
+
           <Route path='/login/' component={Login} />
           <Route path='/register/' component={Register} />
+          <Route path='/conversation/' component={Conversation} />
         </article>
       </Router>
     );

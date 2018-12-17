@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import './App.css';
+
 class Login extends Component{
 
   constructor() {
@@ -45,17 +45,17 @@ class Login extends Component{
     return (
       <form>
 
-        <label htmlFor="text"> Username:
+        <label htmlFor='text'> Username:
           <input
-          name="text"/>
+          name='text'/>
         </label>
 
-        <label htmlFor="text"> Password:
+        <label htmlFor='text'> Password:
           <input
-          name="text"/>
+          name='text'/>
         </label>
 
-        <input type="submit" value="Submit" />
+        <input type='submit' value='Submit' />
 
       </form>
     );
