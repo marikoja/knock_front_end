@@ -8,7 +8,11 @@ class Conversation extends Component {
 
     return (
       <article className='conversation-entry'>
-        <p> Testing place holder</p>
+        <p>conversation with _______</p>
+        <p>conversation 1 ...</p>
+        <p>conversation 2...</p>
+        <p>conversation 3...</p>
+
         <Reply/>
       </article>
     )
