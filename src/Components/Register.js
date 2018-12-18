@@ -3,14 +3,16 @@ import axios from 'axios';
 
 class Register extends Component{
 
-  constructor() {
-      super();
+  constructor(props) {
+      super(props);
 
       this.state = {
         username: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        message: '',
+        page: ''
       };
     }
 
@@ -23,10 +25,10 @@ class Register extends Component{
     }
 
     valid = () => {
-      return this.state.username.length > 0 &&
+      return (this.state.username.length > 0 &&
              this.state.password.length > 0 &&
              this.state.email.includes('@') &&
-             (this.state.password === this.state.confirmPassword);
+             (this.state.password === this.state.confirmPassword));
     }
 
     clearForm = () => {
@@ -40,12 +42,15 @@ class Register extends Component{
 
     onFormSubmit = (event) => {
       event.preventDefault();
-
-      const url = 'http://204.11.60.79:5000/auth'
+      this.setState({
+        message: ''
+      })
+      const url = 'http://204.11.60.79:5000/user'
 
       if (this.valid()) {
         axios.post(url,{
           user_name: this.state.username,
+          email: this.state.email,
           password: this.state.password
         }, {
           headers: {
@@ -53,14 +58,12 @@ class Register extends Component{
           }
         })
           .then((response) => {
-            this.setState({
-              message: `Login successful for ${this.state.username}`
-            });
+            this.props.notifyHome('Registered');
           })
           .catch((error) => {
           console.log(error.message);
           this.setState({
-            message: error.message,
+            message: 'Registration failed',
           })
         })
       }
@@ -68,7 +71,7 @@ class Register extends Component{
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.onFormSubmit}>
         <div>
           <label htmlFor='text'> Username: </label>
             <input
@@ -109,7 +112,6 @@ class Register extends Component{
               onChange={this.onFieldChange}
             />
         </div>
-        // TODO Disable submit button until valid inputs for all fields
         <input type='submit' value='Submit' />
       </form>
     );

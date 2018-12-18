@@ -23,7 +23,16 @@ class Home extends Component{
    setHomeState = (changes) => {
      console.log(changes);
      this.setState(changes);
+   }
 
+   notifyHome = (message) => {
+     if (message === 'Registered') {
+       this.setState({
+         page: 'login'
+       });
+     } else {
+       throw new Error ('Received unexpected notification.');
+     }
    }
 
    openHome = () => {
@@ -44,18 +53,28 @@ class Home extends Component{
      });
    }
 
+   logout = () => {
+     this.setState({
+       token: null,
+       sessionId: null,
+       page: 'home'
+     });
+   }
+
   render() {
 
     if ((this.state.token !== null) && (this.state.sessionId !== null)) {
       if (this.state.conversationId !== null) {
         return (
           <div className='Main'>
+            <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
             <Conversation/>
           </div>
         );
       } else {
         return (
           <div className='Main'>
+            <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
             <Users/>
           </div>
         );
@@ -81,7 +100,7 @@ class Home extends Component{
         return (
           <div className='Main'>
             <button className='HomeButton' onClick={this.openHome}>HOME</button>
-            <Register/>
+            <Register notifyHome = {this.notifyHome}/>
           </div>
 
         )

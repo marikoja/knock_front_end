@@ -1,3 +1,9 @@
+TODO:
+- Registering automatically logs the user in
+- Session validation, supply session details to API
+- Do not show current logged in user on users page
+- Show 'Logged in as ${username}'
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

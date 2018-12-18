@@ -9,7 +9,7 @@ class Login extends Component{
       this.state = {
         username: '',
         password: '',
-
+        message: ''
       };
     }
 
@@ -35,6 +35,9 @@ class Login extends Component{
 
     onFormSubmit = (event) => {
       event.preventDefault();
+      this.setState({
+        message: ''
+      })
 
       const url = 'http://204.11.60.79:5000/auth';
 
@@ -60,13 +63,11 @@ class Login extends Component{
           .catch((error) => {
           console.log(error.message);
           this.setState({
-            message: error.message,
+            message: 'Login failed.',
           })
         })
       }
     }
-
-
 
   render() {
     return (
@@ -91,7 +92,7 @@ class Login extends Component{
         </label>
 
         <input type='submit' value='Submit' />
-
+        <div className='BadLogin'>{this.state.message}</div>
       </form>
     );
   }
