@@ -1,3 +1,6 @@
+body{
+  background-color: #777;
+}
 .App {
   text-align: center;
 }
@@ -31,13 +34,36 @@
   }
 }
 
-.Button {
-  background-color: #4CAF50;
+.NavBtnContainer {
+  position: absolute;
+  top: 40%;
+  left: calc(50% - 100px);
+}
+
+.HomeButton {
+  background-color: #999;
   border: none;
   color: white;
   padding: 15px 25px;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 10px;
+  display: block;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  margin-top: 10px;
+
+}
+
+.Main {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #ccc;
+  margin-top: 20px;
+  height: 900px;
+  background-color: #fff;
+  position: relative;
 }

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+
 class Register extends Component{
 
   constructor() {
@@ -39,10 +41,28 @@ class Register extends Component{
     onFormSubmit = (event) => {
       event.preventDefault();
 
+      const url = 'http://204.11.60.79:5000/auth'
+
       if (this.valid()) {
-        this.props.addCardCallback(this.state);
-        this.clearForm();
-        // TODO route to users/start conversation page
+        axios.post(url,{
+          user_name: this.state.username,
+          password: this.state.password
+        }, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+          .then((response) => {
+            this.setState({
+              message: `Login successful for ${this.state.username}`
+            });
+          })
+          .catch((error) => {
+          console.log(error.message);
+          this.setState({
+            message: error.message,
+          })
+        })
       }
     }
 
@@ -74,7 +94,7 @@ class Register extends Component{
           <label htmlFor='text'> Password:</label>
             <input
               name='password'
-              type='text'
+              type='password'
               value={this.state.password}
               onChange={this.onFieldChange}
             />
@@ -84,7 +104,7 @@ class Register extends Component{
           <label htmlFor='text'> Confirm Password:</label>
             <input
               name='confirmPassword'
-              type='text'
+              type='password'
               value={this.state.confirmPassword}
               onChange={this.onFieldChange}
             />

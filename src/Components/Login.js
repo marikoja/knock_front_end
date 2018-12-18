@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class Login extends Component{
 
-  constructor() {
-      super();
+  constructor(props) {
+      super(props);
 
       this.state = {
         username: '',
         password: '',
+
       };
     }
 
@@ -34,24 +36,58 @@ class Login extends Component{
     onFormSubmit = (event) => {
       event.preventDefault();
 
+      const url = 'http://204.11.60.79:5000/auth';
+
       if (this.valid()) {
-        this.props.addCardCallback(this.state);
-        this.clearForm();
+        axios.post(url,{
+          user_name: this.state.username,
+          password: this.state.password
+        }, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+          .then((response) => {
+            console.log(response);
+            this.setState({
+              message: `Login successful for ${this.state.username}`
+            });
+            this.props.setHomeState({
+              sessionId: response.data[0].session_id,
+              token: response.data[0].token
+            })
+          })
+          .catch((error) => {
+          console.log(error.message);
+          this.setState({
+            message: error.message,
+          })
+        })
       }
     }
 
+
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.onFormSubmit}>
 
         <label htmlFor='text'> Username:
           <input
-          name='text'/>
+            name='username'
+            type='text'
+            value={this.state.username}
+            onChange={this.onFieldChange}
+          />
         </label>
 
         <label htmlFor='text'> Password:
           <input
-          name='text'/>
+            name='password'
+            type='password'
+            value={this.state.password}
+            onChange={this.onFieldChange}
+          />
         </label>
 
         <input type='submit' value='Submit' />
