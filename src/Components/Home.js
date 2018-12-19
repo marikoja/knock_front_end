@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import Conversation from './Conversation';
 import Users from './Users';
+import '../css/Home.css';
 
 class Home extends Component{
   constructor(props) {
@@ -66,9 +66,11 @@ class Home extends Component{
     if ((this.state.token !== null) && (this.state.sessionId !== null)) {
       if (this.state.conversationId !== null) {
         return (
-          <div className='Main'>
-            <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
-            <Conversation/>
+          <div className='container'>
+            <div className='Main'>
+              <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
+              <Conversation/>
+            </div>
           </div>
         );
       } else {

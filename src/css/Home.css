@@ -1,0 +1,23 @@
+.NavBtnContainer {
+  position: absolute;
+  top: calc(50% - 90px);
+  left: calc(50% - 100px);
+}
+
+.HomeButton {
+  background-color: #00719E;
+  border: none;
+  color: #00344D;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+
+}

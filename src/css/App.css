@@ -1,0 +1,38 @@
+body{
+  /* background-color: #777; */
+  background-image: url('../images/anh-nguyen-672571-unsplash.jpg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+
+}
+.App {
+  text-align: center;
+}
+
+.container {
+  position: relative;
+
+}
+
+.Main {
+  height: 500px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #00344D;
+  color: #00344D;
+  position: absolute;
+  background-color: rgba(162, 153, 159, 0.5);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.BadLogin {
+  color: red;
+}

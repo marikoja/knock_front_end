@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import '../css/form.css'
 
 class Login extends Component{
 
@@ -71,29 +72,32 @@ class Login extends Component{
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <div className='form'>
+        <form onSubmit={this.onFormSubmit}>
+          <div className='formField'>
+            <label htmlFor='text'> Username:</label>
+            <input
+              name='username'
+              type='text'
+              value={this.state.username}
+              onChange={this.onFieldChange}
+            />
+          </div>
 
-        <label htmlFor='text'> Username:
-          <input
-            name='username'
-            type='text'
-            value={this.state.username}
-            onChange={this.onFieldChange}
-          />
-        </label>
+          <div className='formField'>
+            <label htmlFor='text'> Password:</label>
+            <input
+              name='password'
+              type='password'
+              value={this.state.password}
+              onChange={this.onFieldChange}
+            />
+          </div>
 
-        <label htmlFor='text'> Password:
-          <input
-            name='password'
-            type='password'
-            value={this.state.password}
-            onChange={this.onFieldChange}
-          />
-        </label>
-
-        <input type='submit' value='Submit' />
-        <div className='BadLogin'>{this.state.message}</div>
-      </form>
+          <input type='submit' value='Submit' className='formSubmit'/>
+          <div className='BadLogin'>{this.state.message}</div>
+        </form>
+      </div>
     );
   }
 }

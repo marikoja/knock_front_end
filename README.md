@@ -1,8 +1,13 @@
 TODO:
+
+Back burner/future features
 - Registering automatically logs the user in
 - Session validation, supply session details to API
 - Do not show current logged in user on users page
 - Show 'Logged in as ${username}'
+- attachment support
+- implement react router (import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';)
+-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
