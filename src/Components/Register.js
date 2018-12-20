@@ -33,37 +33,38 @@ class Register extends Component{
     information they provide to us. Message will provide a hint to the user if
     they do not meet our requirements*/
     valid = () => {
+      let isValid = true;
       if (this.state.username.length === 0) {
         this.setState({
           message: 'Registration failed: username cannot be blank.',
           validReg: false
-        })
+        });
+        isValid = false;
       } else if (this.state.password.length === 0 ) {
         this.setState({
           message: 'Registration failed: password cannot be blank.',
           validReg: false
-        })
+        });
+        isValid = false;
       } else if (!this.state.email.includes('@') ) {
         this.setState({
           message: 'Registration failed: invalid email.',
           validReg: false
-        })
+        });
+        isValid = false;
       } else if ((this.state.password !== this.state.confirmPassword)) {
         this.setState({
           message: 'Registration failed: passwords don\'t match.',
           validReg: false
-        })
+        });
+        isValid = false;
       } else {
         this.setState({
           validReg: true
-        })
+        });
       }
-      return (
-        this.state.validReg
-      );
+      return isValid;
     }
-
-
 
     /* When users click submit we want to send an axios post request
     to add the user to our databse The responose will contain
@@ -72,10 +73,9 @@ class Register extends Component{
       event.preventDefault();
       this.setState({
         message: ''
-      })
-      this.valid();
+      });
 
-      if (this.state.validReg) {
+      if (this.valid()){
         axios.post(apiUrl + '/user',{
           user_name: this.state.username,
           email: this.state.email,
@@ -94,7 +94,7 @@ class Register extends Component{
             message: 'Registration failed.',
           })
         })
-      }
+      };
     }
 
   render() {

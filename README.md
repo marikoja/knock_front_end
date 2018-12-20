@@ -1,16 +1,24 @@
 # knock_front_end
-A conversation app built using reactjs for Knock coding project
+A conversation app built using reactjs for Knock coding challenge
 
 ## Highlights
-*
 
-## Future enhancements and features:
-* Registering automatically logs the user in
-* Session validation, supply session details to API
-* Show 'Logged in as ${username}'
-* Attachment support
-* Implement react router instead of conditional logic on the home component
-*
+* User registration.
+* Password protected login.
+* Quick click on a contact to start conversation.
+* Polling to check for new messages.
+* WYSIWYG editor.
+* Messages have basic inbound and outbound HTML support.
+
+## To Do
+
+* Attachment support in WYSIWYG editor.
+* Overall 'look and feel'  enhancements.
+* Registering automatically logs the user in.
+* Session validation, supply session details to API.
+* Implement react router on the home component.
+* Prevent user from sending empty replies.
+* Render past conversations with contacts.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

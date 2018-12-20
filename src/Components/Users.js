@@ -43,7 +43,7 @@ class Users extends Component {
 
     return (
       <div className=''>
-        <div className='banner'>Select a contact to start or continue a conversation</div>
+        <div className='banner'>Select a contact to start a conversation</div>
         <div className='userList'>
           {userComponents}
         </div>

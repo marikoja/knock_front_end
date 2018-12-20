@@ -22,28 +22,30 @@ class Reply extends Component {
   /* Whent the user sends the message we want to add it to the
   current conversation and clear the editor */
   send = () => {
-    this.setState({
-      sendingReply:true
-    });
-    axios.post(apiUrl + '/conversation/' + this.props.conversationId + '/message', {
-      text: this.state.html,
-      user_id: this.props.userId
-    }, {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then((response) => {
-        this.setState({
-          html:'',
-          sendingReply:false});
-        // Notify conversation component that a new reply has been made
-        this.props.messageSent();
+    if (this.state.html !== '') {
+      this.setState({
+        sendingReply:true
+      });
+      axios.post(apiUrl + '/conversation/' + this.props.conversationId + '/message', {
+        text: this.state.html,
+        user_id: this.props.userId
+      }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
       })
-      .catch((error) => {
-      console.error(error);
-      this.setState({sendingReply:false});
-    })
+        .then((response) => {
+          this.setState({
+            html:'',
+            sendingReply:false});
+          // Notify conversation component that a new reply has been made
+          this.props.messageSent();
+        })
+        .catch((error) => {
+        console.error(error);
+        this.setState({sendingReply:false});
+      })
+    }
   }
 
   render() {
