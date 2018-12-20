@@ -4,7 +4,6 @@ import '../css/form.css'
 import {apiUrl} from '../config.js'
 
 class Login extends Component{
-
   constructor(props) {
       super(props);
 
@@ -15,6 +14,8 @@ class Login extends Component{
       };
     }
 
+    /* when the user enters values into the form we want to setState
+   to the value they type */
     onFieldChange = (event) => {
       const fieldName = event.target.name;
       const fieldValue = event.target.value;
@@ -23,18 +24,15 @@ class Login extends Component{
       this.setState(updateState);
     }
 
+    // As a basic validation we to check the username and password is not zero
     valid = () => {
       return this.state.username.length > 0 &&
              this.state.password.length > 0
     }
 
-    clearForm = () => {
-      this.setState({
-        username: '',
-        password: '',
-      });
-    }
-
+    /* When users click submit we want to send an axios post request to our
+    databse to check that they are a valid user. The responose will contain
+    a sessionId, tokenId and userId */
     onFormSubmit = (event) => {
       event.preventDefault();
       this.setState({

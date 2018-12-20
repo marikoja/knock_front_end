@@ -1,13 +1,16 @@
-TODO:
+# knock_front_end
+A conversation app built using reactjs for Knock coding project
 
-Back burner/future features
-- Registering automatically logs the user in
-- Session validation, supply session details to API
-- Do not show current logged in user on users page
-- Show 'Logged in as ${username}'
-- attachment support
-- implement react router (import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';)
--
+## Highlights
+*
+
+## Future enhancements and features:
+* Registering automatically logs the user in
+* Session validation, supply session details to API
+* Show 'Logged in as ${username}'
+* Attachment support
+* Implement react router instead of conditional logic on the home component
+*
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

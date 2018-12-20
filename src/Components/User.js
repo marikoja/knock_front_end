@@ -15,9 +15,10 @@ class User extends Component {
     };
   }
 
+  /*When the user slects a contact to communicate with we want to send
+  a post request to start a new conversation. The response will contain
+  a converationId*/
   selectUser = () => {
-
-
     axios.post(apiUrl + '/conversation',{
       users: [
         {user_id: this.props.userId},

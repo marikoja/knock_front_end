@@ -11,6 +11,8 @@ class Users extends Component {
       users: []
     }
   }
+
+  // When the page loads we want to send our request for the list of users
   componentDidMount = () => {
     axios.get(apiUrl + '/user')
       .then( (response) => {
@@ -22,7 +24,6 @@ class Users extends Component {
   }
 
   render() {
-
     const users = this.state.users;
     const userComponents = users.map((user) => {
       // We do not want to show our own user name on list of possible recipents.
@@ -40,10 +41,9 @@ class Users extends Component {
       }
     });
 
-
     return (
       <div className=''>
-        <div className='banner'>Select a contact to start a conversation</div>
+        <div className='banner'>Select a contact to start or continue a conversation</div>
         <div className='userList'>
           {userComponents}
         </div>

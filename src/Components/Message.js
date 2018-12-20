@@ -4,10 +4,9 @@ import propTypes from 'prop-types';
 import '../css/message.css'
 
 class Message extends Component {
-  constructor(props){
-    super(props);
-  }
+
   render() {
+    // Set styling based on message sender
     let cssClass = 'chat-entry ';
     cssClass += this.props.userId === this.props.senderId ? 'local' : 'remote'
     return(

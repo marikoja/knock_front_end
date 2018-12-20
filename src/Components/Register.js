@@ -19,6 +19,8 @@ class Register extends Component{
       };
     }
 
+    /* when the user enters values into the form we want to setState
+   to the value they type */
     onFieldChange = (event) => {
       const fieldName = event.target.name;
       const fieldValue = event.target.value;
@@ -27,6 +29,9 @@ class Register extends Component{
       this.setState(updateState);
     }
 
+    /* When the user is registering we want to set some requirements for the
+    information they provide to us. Message will provide a hint to the user if
+    they do not meet our requirements*/
     valid = () => {
       if (this.state.username.length === 0) {
         this.setState({
@@ -58,15 +63,11 @@ class Register extends Component{
       );
     }
 
-    clearForm = () => {
-      this.setState({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      });
-    }
 
+
+    /* When users click submit we want to send an axios post request
+    to add the user to our databse The responose will contain
+    a sessionId, tokenId and userId */
     onFormSubmit = (event) => {
       event.preventDefault();
       this.setState({
@@ -138,7 +139,7 @@ class Register extends Component{
               onChange={this.onFieldChange}
             />
           </div>
-          <input type='submit' value='Submit' disable={!(this.state.validReg)} className='formSubmit'/>
+          <input type='submit' value='Submit' className='formSubmit'/>
           <div className='error'>{this.state.message}</div>
         </form>
       </div>

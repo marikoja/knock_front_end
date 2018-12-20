@@ -27,17 +27,7 @@ class Home extends Component{
      this.setState(changes);
    }
 
-   // notifyHome
-   notifyHome = (message) => {
-     if (message === 'Registered') {
-       this.setState({
-         page: 'login'
-       });
-     } else {
-       throw new Error ('Received unexpected notification.');
-     }
-   }
-
+// Page state tracks which page the user is seeing
    openHome = () => {
      this.setState({
        page: 'home'
@@ -56,6 +46,26 @@ class Home extends Component{
      });
    }
 
+   // notifyHome accepts message from register component upon
+    // successful registration to update page to login page
+   notifyHome = (message) => {
+     if (message === 'Registered') {
+       this.setState({
+         page: 'login'
+       });
+     } else {
+       throw new Error ('Received unexpected notification.');
+     }
+   }
+
+   navBack = () => {
+     this.setState({
+       conversationId: null
+     });
+   }
+
+   // we want to rerurn to home page and clear all values for state when
+   // the user logs out
    logout = () => {
      this.setState({
        page: 'home',
@@ -69,7 +79,6 @@ class Home extends Component{
    }
 
   render() {
-
     // if the user is logged in (both session_id and token have a value)
     if ((this.state.token !== null) && (this.state.sessionId !== null)) {
 
@@ -78,8 +87,13 @@ class Home extends Component{
       if (this.state.conversationId !== null) {
         return (
             <div className='Main'>
-              <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
-              <Conversation userId={this.state.userId} sessionId={this.state.sessionId} token={this.state.token} conversationId={this.state.conversationId}/>
+              <button className='HomeButton' onClick={this.navBack}>BACK</button>
+              <Conversation
+                userId={this.state.userId}
+                sessionId={this.state.sessionId}
+                token={this.state.token}
+                conversationId={this.state.conversationId}
+              />
             </div>
         );
 
@@ -89,7 +103,12 @@ class Home extends Component{
         return (
           <div className='Main'>
             <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
-            <Users userId={this.state.userId} sessionId={this.state.sessionId} token={this.state.token} setHomeState={this.setHomeState}/>
+            <Users
+              userId={this.state.userId}
+              sessionId={this.state.sessionId}
+              token={this.state.token}
+              setHomeState={this.setHomeState}
+            />
           </div>
         );
       }

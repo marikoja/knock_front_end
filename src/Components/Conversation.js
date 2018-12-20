@@ -13,12 +13,13 @@ class Conversation extends Component {
     }
   }
 
-  // scroll to the bottom of the page whenever
-  // we receive a new message
+  /* scroll to the bottom of the page whenever
+  we receive a new message */
   scrollToBottom = () => {
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   }
 
+  // When we load the page we want to scorll to the bottom of the message list
   componentDidMount() {
     this.scrollToBottom();
 
@@ -37,6 +38,8 @@ class Conversation extends Component {
     this.scrollToBottom();
   }
 
+  /* Get new messages after we send a message to render our latest messsage in
+  the conversation */
   messageSent = () => {
     this.fetchNewMessages();
   }
@@ -46,11 +49,12 @@ class Conversation extends Component {
     if (this.state.messages.length > 0) {
       afterMessage = '?after=' + this.state.messages[this.state.messages.length - 1].message_id;
     }
+
     axios.get(apiUrl + '/conversation/' + this.props.conversationId + afterMessage)
       .then( (response) => {
 
-        // as a safeguard, remove any messages that are already
-        // on this.state.messages -- prevent the display of duplicates
+        /* As a safeguard, remove any messages that are already
+        on this.state.messages -- prevent the display of duplicates */
         for (let a = 0; a < response.data.messages.length; a++) {
           for (let b = 0; b < this.state.messages.length; b++) {
             if (response.data.messages[a].message_id === this.state.messages[b].message_id) {

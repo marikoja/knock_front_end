@@ -9,16 +9,22 @@ class Reply extends Component {
 
   constructor(props) {
       super(props);
-      this.state = { html: '' }; // You can also pass a Quill Delta here
+      this.state = {
+        html: '',
+        sendingReply:false };
   }
 
+  // We want to send the HTML from the WYSIWYG editor in the email
   handleChange = (value, delta, source, editor) => {
-
     this.setState({ html: editor.getHTML() });
   }
 
+  /* Whent the user sends the message we want to add it to the
+  current conversation and clear the editor */
   send = () => {
-
+    this.setState({
+      sendingReply:true
+    });
     axios.post(apiUrl + '/conversation/' + this.props.conversationId + '/message', {
       text: this.state.html,
       user_id: this.props.userId
@@ -28,27 +34,26 @@ class Reply extends Component {
       }
     })
       .then((response) => {
-        this.setState({html:''});
+        this.setState({
+          html:'',
+          sendingReply:false});
         // Notify conversation component that a new reply has been made
         this.props.messageSent();
       })
       .catch((error) => {
-      console.log(error.message);
-      this.setState({
-        message: 'Login failed',
-      })
+      console.error(error);
+      this.setState({sendingReply:false});
     })
   }
-
-
 
   render() {
     return (
       <div className='replyBox'>
         <ReactQuill value={this.state.html}
                   onChange={this.handleChange} />
-                <button onClick={this.send} className='sendBtn'>SEND</button>
-
+                <button onClick={this.send}
+                 disabled={this.state.sendingReply}
+                 className='sendBtn'>SEND</button>
       </div>
     )
   }

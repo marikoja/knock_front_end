@@ -17,3 +17,8 @@
   margin: 5px !important;
 
 }
+
+.ql-container {
+  height: 80px !important;
+  padding-bottom: 5px !important;
+}
