@@ -5,6 +5,7 @@ import Conversation from './Conversation';
 import Users from './Users';
 import '../css/Home.css';
 
+// Home is the handler for the entire app
 class Home extends Component{
   constructor(props) {
       super(props);
@@ -20,10 +21,13 @@ class Home extends Component{
       }
   }
 
+  // setHomeState passes changes throughout nested
+  // components back to Home
    setHomeState = (changes) => {
      this.setState(changes);
    }
 
+   // notifyHome
    notifyHome = (message) => {
      if (message === 'Registered') {
        this.setState({
@@ -54,9 +58,13 @@ class Home extends Component{
 
    logout = () => {
      this.setState({
-       token: null,
+       page: 'home',
+       loggedIn: false,
+       userName: null,
+       userId: null,
        sessionId: null,
-       page: 'home'
+       token: null,
+       conversationId: null
      });
    }
 

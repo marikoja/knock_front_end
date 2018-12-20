@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import '../css/form.css'
+import {apiUrl} from '../config.js'
 
 class Register extends Component{
 
@@ -72,10 +73,9 @@ class Register extends Component{
         message: ''
       })
       this.valid();
-      const url = 'http://204.11.60.79:5000/user'
 
       if (this.state.validReg) {
-        axios.post(url,{
+        axios.post(apiUrl + '/user',{
           user_name: this.state.username,
           email: this.state.email,
           password: this.state.password

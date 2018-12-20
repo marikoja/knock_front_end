@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import User from './User';
 import axios from 'axios';
 import '../css/users.css'
+import {apiUrl} from '../config.js'
 
 class Users extends Component {
   constructor(props) {
@@ -11,10 +12,7 @@ class Users extends Component {
     }
   }
   componentDidMount = () => {
-
-    const url = 'http://204.11.60.79:5000/user';
-
-    axios.get(url)
+    axios.get(apiUrl + '/user')
       .then( (response) => {
         this.setState({ users: response.data });
     })

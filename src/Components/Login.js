@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import '../css/form.css'
+import {apiUrl} from '../config.js'
 
 class Login extends Component{
 
@@ -40,10 +41,8 @@ class Login extends Component{
         message: ''
       })
 
-      const url = 'http://204.11.60.79:5000/auth';
-
       if (this.valid()) {
-        axios.post(url,{
+        axios.post(apiUrl + '/auth',{
           user_name: this.state.username,
           password: this.state.password
         }, {

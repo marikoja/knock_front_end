@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import propTypes from 'prop-types';
 import '../css/users.css'
 import axios from 'axios'
+import {apiUrl} from '../config.js'
 
 class User extends Component {
   constructor(props){
@@ -15,9 +16,9 @@ class User extends Component {
   }
 
   selectUser = () => {
-    const url = 'http://204.11.60.79:5000/conversation'
 
-    axios.post(url,{
+
+    axios.post(apiUrl + '/conversation',{
       users: [
         {user_id: this.props.userId},
         {user_id: this.props.recipientId}

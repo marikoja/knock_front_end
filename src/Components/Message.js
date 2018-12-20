@@ -14,7 +14,7 @@ class Message extends Component {
       <article className={cssClass} >
         <h4 className='entry-name'>{this.props.senderName}</h4>
         <section className='entry-bubble'>
-          <p className='entry-body'>{this.props.body}</p>
+          <p className='entry-body' dangerouslySetInnerHTML={{__html: this.props.body}}/>
           <p className='entry-time'><Timestamp time={this.props.timestamp}/></p>
         </section>
       </article>
@@ -23,7 +23,7 @@ class Message extends Component {
 }
 
 Message.propTypes = {
-  sender: propTypes.string.isRequired,
+  senderName: propTypes.string.isRequired,
   body: propTypes.string.isRequired,
   timestamp: propTypes.string.isRequired,
   isPresent: propTypes.bool
