@@ -28,23 +28,23 @@ class Register extends Component{
 
     valid = () => {
       if (this.state.username.length === 0) {
-        alert('Username cannot be blank.')
         this.setState({
+          message: 'Registration failed: username cannot be blank.',
           validReg: false
         })
       } else if (this.state.password.length === 0 ) {
-        alert('Password cannot be blank.')
         this.setState({
+          message: 'Registration failed: password cannot be blank.',
           validReg: false
         })
       } else if (!this.state.email.includes('@') ) {
-        alert('Invalid email.');
         this.setState({
+          message: 'Registration failed: invalid email.',
           validReg: false
         })
       } else if ((this.state.password !== this.state.confirmPassword)) {
-        alert("Passwords don't match");
         this.setState({
+          message: 'Registration failed: passwords don\'t match.',
           validReg: false
         })
       } else {
@@ -139,6 +139,7 @@ class Register extends Component{
             />
           </div>
           <input type='submit' value='Submit' disable={!(this.state.validReg)} className='formSubmit'/>
+          <div className='error'>{this.state.message}</div>
         </form>
       </div>
     );

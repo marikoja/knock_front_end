@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
 import Timestamp from './Timestamp';
 import propTypes from 'prop-types';
+import '../css/message.css'
 
 class Message extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
-    const senderName = this.props.sender;
-    const body = this.props.body;
-    const timestamp = this.props.timestamp;
-    let theCSSClass = 'conversation-entry ';
-    theCSSClass += senderName === 'Estragon' ? 'remote' : 'local'
+    let cssClass = 'chat-entry ';
+    cssClass += this.props.userId === this.props.senderId ? 'local' : 'remote'
     return(
-      <article className={theCSSClass} >
-        <h3 className='entry-name'>{senderName}</h3>
+      <article className={cssClass} >
+        <h4 className='entry-name'>{this.props.senderName}</h4>
         <section className='entry-bubble'>
-          <p className='entry-body'>{body}</p>
-          <p className='entry-time'><Timestamp time={timestamp}/></p>
+          <p className='entry-body'>{this.props.body}</p>
+          <p className='entry-time'><Timestamp time={this.props.timestamp}/></p>
         </section>
       </article>
     );

@@ -21,8 +21,10 @@ body{
   margin-right: auto;
   border: 5px solid #00344D;
   color: #00344D;
+  background-color: rgba( 255,255,255,0.5);
   position: absolute;
-  background-color: rgba(162, 153, 159, 0.5);
+  /* background-color: rgba(162, 153, 159, 0.5); */
+  background-color: none;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -33,6 +35,8 @@ body{
   font-weight: bold;
 }
 
-.BadLogin {
+.error {
   color: red;
+  text-align: center;
+  margin-top: 10px;
 }

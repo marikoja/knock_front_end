@@ -1,0 +1,27 @@
+.userBtn {
+  background-color: #00719E;
+  border: none;
+  color: #00344D;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  width: 200px;
+  margin: 15px auto;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.userList {
+  overflow-y: scroll;
+  height: 100%;
+  height: 360px;
+}
+.banner {
+  margin: 15px;
+}
+
+.dispEmail {
+  font-size: 10px;
+}

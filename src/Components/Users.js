@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import User from './User';
 import axios from 'axios';
+import '../css/users.css'
 
 class Users extends Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class Users extends Component {
     }
   }
   componentDidMount = () => {
-    // console.log('Component did mount was called');
 
     const url = 'http://204.11.60.79:5000/user';
 
@@ -27,24 +27,29 @@ class Users extends Component {
 
     const users = this.state.users;
     const userComponents = users.map((user) => {
-      return (
-        // TODO onClick will route to conversttion page with specified user
-        <button>
+      // We do not want to show our own user name on list of possible recipents.
+      if (this.props.userId !== user.user_id) {
+        return (
           <User
+            key={user.user_id}
             username={user.user_name}
+            recipientId={user.user_id}
             email={user.email}
+            userId={this.props.userId}
+            setHomeState={this.props.setHomeState}
           />
-        </button>
-      );
+        );
+      }
     });
 
+
     return (
-      <article className=''>
-        <div>Select a contact to start a conversation</div>
-        <div>
+      <div className=''>
+        <div className='banner'>Select a contact to start a conversation</div>
+        <div className='userList'>
           {userComponents}
         </div>
-      </article>
+      </div>
     )
   }
 }

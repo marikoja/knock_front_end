@@ -52,19 +52,19 @@ class Login extends Component{
           }
         })
           .then((response) => {
-            console.log(response);
             this.setState({
               message: `Login successful for ${this.state.username}`
             });
             this.props.setHomeState({
               sessionId: response.data[0].session_id,
-              token: response.data[0].token
+              token: response.data[0].token,
+              userId: response.data[0].user_id
             })
           })
           .catch((error) => {
           console.log(error.message);
           this.setState({
-            message: 'Login failed.',
+            message: 'Login failed',
           })
         })
       }
@@ -95,7 +95,7 @@ class Login extends Component{
           </div>
 
           <input type='submit' value='Submit' className='formSubmit'/>
-          <div className='BadLogin'>{this.state.message}</div>
+          <div className='error'>{this.state.message}</div>
         </form>
       </div>
     );

@@ -1,0 +1,19 @@
+.replyBox {
+
+}
+
+.sendBtn {
+  background-color: rgba( 0,0,0,0);
+  border: 1px solid #00344D;
+  border-radius: 5px;
+  font-weight: bold;
+  height: 30px;
+  font-size: 12px;
+  /* margin-top: 5px; */
+}
+
+.quill {
+  background-color: #fff !important;
+  margin: 5px !important;
+
+}

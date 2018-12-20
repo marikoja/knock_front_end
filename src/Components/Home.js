@@ -21,7 +21,6 @@ class Home extends Component{
   }
 
    setHomeState = (changes) => {
-     console.log(changes);
      this.setState(changes);
    }
 
@@ -63,24 +62,32 @@ class Home extends Component{
 
   render() {
 
+    // if the user is logged in (both session_id and token have a value)
     if ((this.state.token !== null) && (this.state.sessionId !== null)) {
+
+      // if the conversation_id is not set, then we want to display the
+      // recipient list page
       if (this.state.conversationId !== null) {
         return (
-          <div className='container'>
             <div className='Main'>
               <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
-              <Conversation/>
+              <Conversation userId={this.state.userId} sessionId={this.state.sessionId} token={this.state.token} conversationId={this.state.conversationId}/>
             </div>
-          </div>
         );
+
+      // otherwise, the user is logged in and a conversation_id is set, so
+      // we dislay the conversation page
       } else {
         return (
           <div className='Main'>
             <button className='HomeButton' onClick={this.logout}>LOGOUT</button>
-            <Users/>
+            <Users userId={this.state.userId} sessionId={this.state.sessionId} token={this.state.token} setHomeState={this.setHomeState}/>
           </div>
         );
       }
+
+    // else the user is not logged in, so we're either displaying the home page,
+    // login page, or the registration page
     } else {
       if (this.state.page === 'home') {
         return (
