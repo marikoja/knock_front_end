@@ -24,21 +24,21 @@ class Users extends Component {
   }
 
   render() {
-    const users = this.state.users;
-    const userComponents = users.map((user) => {
       // We do not want to show our own user name on list of possible recipents.
-      if (this.props.userId !== user.user_id) {
+    const users = this.state.users.filter(user => this.props.userId !== user.user_id);
+    
+    const userComponents = users.map((user) => {
         return (
           <User
             key={user.user_id}
             username={user.user_name}
             recipientId={user.user_id}
             email={user.email}
+            phoneNumber={user.phone_number}
             userId={this.props.userId}
             setHomeState={this.props.setHomeState}
           />
         );
-      }
     });
 
     return (

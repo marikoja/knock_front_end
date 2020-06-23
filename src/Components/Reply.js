@@ -19,7 +19,7 @@ class Reply extends Component {
     this.setState({ html: editor.getHTML() });
   }
 
-  /* Whent the user sends the message we want to add it to the
+  /* When the user sends the message we want to add it to the
   current conversation and clear the editor */
   send = () => {
     if (this.state.html !== '') {

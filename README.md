@@ -16,7 +16,6 @@ Check out the demo here: https://www.youtube.com/watch?v=DfxE3uo4FxU&feature=you
 
 * Attachment support in WYSIWYG editor.
 * Overall 'look and feel'  enhancements.
-* Registering automatically logs the user in.
 * Session validation, supply session details to API.
 * Implement react router on the home component.
 * Prevent user from sending empty replies.

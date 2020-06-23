@@ -24,7 +24,7 @@ class Login extends Component{
       this.setState(updateState);
     }
 
-    // As a basic validation we to check the username and password is not zero
+    // As a basic validation we to check that the username and password lengths are not zero
     valid = () => {
       return this.state.username.length > 0 &&
              this.state.password.length > 0
