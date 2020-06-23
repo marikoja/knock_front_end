@@ -34,6 +34,7 @@ class Users extends Component {
             username={user.user_name}
             recipientId={user.user_id}
             email={user.email}
+            phoneNumber={user.phone_number}
             userId={this.props.userId}
             setHomeState={this.props.setHomeState}
           />

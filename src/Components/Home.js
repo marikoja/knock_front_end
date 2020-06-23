@@ -64,7 +64,7 @@ class Home extends Component{
      });
    }
 
-   // we want to rerurn to home page and clear all values for state when
+   // we want to return to home page and clear all values for state when
    // the user logs out
    logout = () => {
      this.setState({
@@ -136,7 +136,7 @@ class Home extends Component{
         return (
           <div className='Main'>
             <button className='HomeButton' onClick={this.openHome}>HOME</button>
-            <Register notifyHome = {this.notifyHome}/>
+            <Register notifyHome = {this.notifyHome} setHomeState = {this.setHomeState}/>
           </div>
 
         )

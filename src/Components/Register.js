@@ -31,7 +31,7 @@ class Register extends Component{
 
     /* When the user is registering we want to set some requirements for the
     information they provide to us. Message will provide a hint to the user if
-    they do not meet our requirements*/
+    they do not meet our requirements */
     valid = () => {
       let isValid = true;
       if (this.state.username.length === 0) {
@@ -68,7 +68,7 @@ class Register extends Component{
 
     /* When users click submit we want to send an axios post request
     to add the user to our databse The responose will contain
-    a sessionId, tokenId and userId */
+    a userId */
     onFormSubmit = (event) => {
       event.preventDefault();
       this.setState({
@@ -86,13 +86,37 @@ class Register extends Component{
           }
         })
           .then((response) => {
-            this.props.notifyHome('Registered');
+            // When the registration is successful we want to automatically log the user in
+            axios.post(apiUrl + '/auth',{
+              user_name: this.state.username,
+              password: this.state.password
+            }, {
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
+              .then((response) => {
+                this.setState({
+                  message: `Login successful for ${this.state.username}`
+                });
+                this.props.setHomeState({
+                  sessionId: response.data[0].session_id,
+                  token: response.data[0].token,
+                  userId: response.data[0].user_id,
+                  page: 'home',
+                  loggedIn: true
+                })
+              })
+              .catch((error) => {
+                console.log(error.message);
+                this.props.notifyHome('Registered');
+              })
           })
           .catch((error) => {
-          console.log(error.message);
-          this.setState({
-            message: 'Registration failed.',
-          })
+            console.log(error.message);
+            this.setState({
+              message: 'Registration failed.',
+            })
         })
       };
     }

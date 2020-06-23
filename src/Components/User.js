@@ -11,7 +11,8 @@ class User extends Component {
       username: '',
       recipientId: '',
       email: '',
-      userId: ''
+      userId: '',
+      phoneNumber: '',
     };
   }
 
@@ -45,6 +46,7 @@ class User extends Component {
   render() {
     const username = this.props.username;
     const email = this.props.email;
+    const phoneNumber = this.props.phoneNumber;
 
     return(
       <button
@@ -52,6 +54,7 @@ class User extends Component {
         onClick={this.selectUser}>
         {username}
         <div className='dispEmail'>{email}</div>
+        <div className='dispEmail'>{phoneNumber}</div>
       </button>
     );
   }
